@@ -198,12 +198,40 @@ main.assess{padding-bottom:110px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 @media print{
-  @page{margin:12mm}
-  body{background:#fff}
-  .noprint,.hdr,.nav,.toast,.share,.redo{display:none!important}
-  .card,.cta,.res-hero{box-shadow:none;break-inside:avoid;page-break-inside:avoid}
+  @page{size:A4;margin:9mm}
+  body{background:#fff;font-size:12.5px;line-height:1.5}
+  .noprint,.hdr,.nav,.toast,.share,.redo,.divlbl{display:none!important}
   .wrap{max-width:none;padding:0}
   .hero,.res-hero{border-radius:0}
+  .res-hero{padding:14px 16px 12px;margin-bottom:10px}
+  .res-hero img{height:38px;margin-bottom:4px}
+  .res-hero h1{font-size:26px}
+  .res-hero p{font-size:10.5px;margin-top:4px}
+  .wrap[style]{padding-top:0!important}
+  .card{box-shadow:none;break-inside:avoid;page-break-inside:avoid;padding:14px 16px;margin-bottom:9px}
+  .card h2{font-size:21px}
+  .card .sub{margin-bottom:8px;font-size:11.5px}
+  .card p{margin-top:7px;font-size:12px}
+  .profile{margin-bottom:10px}
+  .avatar{width:46px;height:46px;font-size:21px}
+  .profile h2{font-size:21px}
+  .mini{padding:8px 10px}.mini b{font-size:18px}
+  .stack{margin-top:8px}
+  .blocks{margin-top:8px;gap:8px}
+  .blk{padding:9px 11px}.blk b{font-size:26px}
+  .dim{margin-top:9px}.code{font-size:34px;padding:3px 18px}
+  .hb{margin-top:6px}.hb .lab{font-size:12.5px}
+  .lead-grid{gap:8px;margin-top:8px}.ld{padding:9px 11px}.ld b{font-size:24px}
+  .hbox{margin-top:8px;padding:8px 11px;font-size:12px}
+  .beliefs{gap:8px;margin-top:8px}
+  .bel{padding:10px 12px;break-inside:avoid}.bel h3{font-size:18px}.bel .sc{font-size:26px}.bel p{margin-top:6px;font-size:12px}
+  .radar-wrap{max-width:410px;margin:0 auto}
+  .radar-wrap canvas{width:100%!important;height:100%!important}
+  .hl{font-size:12px;margin-top:6px}
+  .plan{margin-top:6px}.plan li{padding:7px 0;gap:10px}
+  .plan .em{width:30px;height:30px;font-size:16px}
+  .plan b{font-size:13px}.plan div span{font-size:11.5px}
+  .note{margin:4px 0 0;font-size:10.5px}
 }
 </style>
 </head>
@@ -974,6 +1002,8 @@ function fallbackCopy(text){
   toast(ok?'Link copiado! 🔗':'Copie manualmente: '+text);
 }
 window.addEventListener('load',function(){ if(S.screen==='results') drawRadar() });
+window.addEventListener('beforeprint',function(){ if(radarChart) radarChart.resize() });
+window.addEventListener('afterprint',function(){ if(radarChart) radarChart.resize() });
 
 render(false);
 })();
